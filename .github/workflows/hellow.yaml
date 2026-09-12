@@ -13,3 +13,8 @@ jobs:
    steps:
     - name: say hello
       run: echo "hellow dosto the friest job runs secussesfully"
+  buy:
+    runs-on: uubuntu-latest
+    steps:
+      - name: say buy
+        run: echo "buy buy"
