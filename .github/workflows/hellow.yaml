@@ -14,11 +14,13 @@ jobs:
     - name: say hello
       run: echo "hellow dosto the friest job runs secussesfully"
   buy:
+    needs: reponame
     runs-on: ubuntu-latest
     steps:
       - name: say buy
         run: echo "buy buy"
   reponame:
+     needs: greet
      runs-on: ubuntu-latest
      steps:
        - name: reponame
