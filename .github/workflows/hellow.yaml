@@ -14,7 +14,7 @@ jobs:
     - name: say hello
       run: echo "hellow dosto the friest job runs secussesfully"
   buy:
-    runs-on: uubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: say buy
         run: echo "buy buy"
