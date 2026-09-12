@@ -1,0 +1,15 @@
+# start with workflow name 
+name: hellow
+# when it should run
+on: 
+ push:
+   branches: [main]
+
+jobs:
+ # job name  
+  greet:
+   # where it should run 
+   runs-on: ubuntu-latest
+   steps:
+    - name: say hello
+    - run: echo "hellow dosto the friest job runs secussesfully"
