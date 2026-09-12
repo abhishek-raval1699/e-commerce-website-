@@ -18,3 +18,8 @@ jobs:
     steps:
       - name: say buy
         run: echo "buy buy"
+  reponame:
+     runs-on: ubuntu-latest
+     steps:
+       - name: reponame
+         run: echo "repo name is ${{ github.event.repository.name }}"
