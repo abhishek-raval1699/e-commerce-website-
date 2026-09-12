@@ -12,4 +12,4 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: say hello
-    - run: echo "hellow dosto the friest job runs secussesfully"
+      run: echo "hellow dosto the friest job runs secussesfully"
