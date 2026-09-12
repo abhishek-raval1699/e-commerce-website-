@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LUMA — modern fashion and lifestyle e-commerce store." />
+  <title>LUMA — Modern Essentials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f5f0; --surface:#fff; --ink:#171717; --muted:#747474;
+      --line:#e8e5de; --accent:#b55b3d; --dark:#20201e; --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;border:0;cursor:pointer}
+    .container{width:min(1180px,92%);margin:auto}
+
+    /* Announcement */
+    .announcement{background:var(--dark);color:#fff;text-align:center;font-size:12px;letter-spacing:.08em;padding:9px}
+
+    /* Header */
+    header{background:rgba(247,245,240,.94);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50;border-bottom:1px solid transparent}
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .logo{font-size:25px;font-weight:700;letter-spacing:.18em}
+    .navlinks{display:flex;gap:30px;font-size:14px;font-weight:600}
+    .navlinks a{position:relative}
+    .navlinks a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--ink);transition:.25s}
+    .navlinks a:hover:after{width:100%}
+    .actions{display:flex;align-items:center;gap:12px}
+    .icon-btn{width:40px;height:40px;background:transparent;border-radius:50%;display:grid;place-items:center;position:relative}
+    .icon-btn:hover{background:#ebe8e1}
+    .icon{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8}
+    .cart-count{position:absolute;right:1px;top:1px;background:var(--accent);color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:grid;place-items:center}
+    .menu{display:none}
+
+    /* Hero */
+    .hero{padding:26px 0 70px}
+    .hero-card{min-height:600px;border-radius:28px;overflow:hidden;position:relative;background:url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85") center/cover}
+    .hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,15,14,.68),rgba(15,15,14,.05) 65%)}
+    .hero-content{position:relative;z-index:1;color:white;min-height:600px;display:flex;align-items:center;padding:70px;max-width:610px}
+    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:700;margin-bottom:20px}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(50px,7vw,82px);line-height:.98;letter-spacing:-.04em;margin-bottom:24px}
+    .hero-content p{font-size:17px;max-width:450px;color:#f1efeb;margin-bottom:32px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 23px;border-radius:999px;font-weight:700;font-size:14px;transition:.25s}
+    .btn-light{background:#fff;color:#171717}
+    .btn-light:hover{transform:translateY(-2px);box-shadow:0 9px 25px #0003}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-dark:hover{background:#000;transform:translateY(-2px)}
+
+    /* Categories */
+    section{padding:55px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:25px}
+    .section-head h2{font-family:"Playfair Display",serif;font-size:36px}
+    .view-all{font-size:13px;font-weight:700;border-bottom:1px solid var(--ink);padding-bottom:3px}
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .category{height:340px;border-radius:var(--radius);overflow:hidden;position:relative}
+    .category img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .category:hover img{transform:scale(1.05)}
+    .category:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0009)}
+    .category span{position:absolute;bottom:22px;left:22px;color:#fff;font-weight:700;font-size:18px;z-index:2}
+
+    /* Products */
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product{min-width:0}
+    .product-image{height:390px;border-radius:18px;overflow:hidden;background:#eceae5;position:relative}
+    .product-image img{width:100%;height:100%;object-fit:cover;transition:.45s}
+    .product:hover .product-image img{transform:scale(1.035)}
+    .badge{position:absolute;left:13px;top:13px;background:#fff;padding:6px 10px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.06em}
+    .heart{position:absolute;right:13px;top:13px;background:#fff;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;transition:.2s}
+    .heart:hover{transform:scale(1.08)}
+    .heart.active{color:var(--accent)}
+    .product-info{padding:13px 3px}
+    .product-name{font-weight:600;font-size:14px}
+    .meta{display:flex;justify-content:space-between;gap:10px;margin-top:5px;color:var(--muted);font-size:13px}
+    .price{color:var(--ink);font-weight:700}
+
+    /* Promo */
+    .promo{background:#ddd7cb;border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:430px}
+    .promo-image{background:url("https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1200&q=85") center/cover}
+    .promo-copy{padding:60px;display:flex;flex-direction:column;justify-content:center}
+    .promo-copy h2{font-family:"Playfair Display",serif;font-size:48px;line-height:1.05;margin-bottom:17px}
+    .promo-copy p{color:#595750;max-width:430px;margin-bottom:25px}
+    .promo-copy .btn{align-self:flex-start}
+
+    /* Newsletter */
+    .newsletter{text-align:center;padding:80px 20px}
+    .newsletter h2{font-family:"Playfair Display",serif;font-size:42px}
+    .newsletter p{color:var(--muted);margin:10px auto 25px}
+    .signup{display:flex;max-width:470px;margin:auto;background:#fff;border:1px solid var(--line);padding:5px;border-radius:999px}
+    .signup input{border:0;outline:0;background:transparent;padding:12px 16px;flex:1;min-width:0}
+    .signup .btn{padding:12px 19px}
+
+    /* Footer */
+    footer{background:var(--dark);color:#fff;padding:55px 0 25px}
+    .footer-grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px}
+    .footer-brand p{color:#aaa;margin-top:14px;max-width:310px;font-size:13px}
+    footer h4{font-size:13px;margin-bottom:15px}
+    footer ul{list-style:none;color:#aaa;font-size:13px}
+    footer li{margin:9px 0}
+    footer li a:hover{color:#fff}
+    .copyright{border-top:1px solid #393937;margin-top:40px;padding-top:20px;color:#888;font-size:11px;display:flex;justify-content:space-between}
+
+    /* Toast */
+    .toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:var(--dark);color:#fff;padding:13px 20px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media(max-width:900px){
+      .navlinks{gap:15px}
+      .category-grid,.product-grid{grid-template-columns:repeat(2,1fr)}
+      .product-image{height:420px}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:650px){
+      .announcement{font-size:10px}
+      .nav{height:64px}
+      .navlinks{display:none}
+      .menu{display:grid}
+      .actions .search{display:none}
+      .hero{padding-top:14px}
+      .hero-card,.hero-content{min-height:540px}
+      .hero-content{padding:30px}
+      .hero-card:after{background:linear-gradient(90deg,rgba(15,15,14,.75),rgba(15,15,14,.15))}
+      h1{font-size:53px}
+      section{padding:40px 0}
+      .section-head h2{font-size:30px}
+      .category-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .category{height:220px}
+      .product-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .product-image{height:270px;border-radius:14px}
+      .promo{grid-template-columns:1fr}
+      .promo-image{min-height:280px}
+      .promo-copy{padding:35px 25px}
+      .promo-copy h2{font-size:38px}
+      .newsletter h2{font-size:34px}
+      .signup{border-radius:18px;display:block;padding:8px}
+      .signup input{width:100%}
+      .signup .btn{width:100%}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:25px}
+      .footer-brand{grid-column:1/-1}
+      .copyright{display:block}
+      .copyright span{display:block;margin-top:5px}
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">FREE SHIPPING ON ORDERS OVER ₹2,500 &nbsp; • &nbsp; EASY 14-DAY RETURNS</div>
+
+  <header>
+    <div class="container nav">
+      <button class="icon-btn menu" aria-label="Open menu" onclick="toggleMenu()">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="logo" href="#">LUMA</a>
+      <nav class="navlinks" id="navLinks">
+        <a href="#new">New In</a><a href="#shop">Shop</a><a href="#categories">Collections</a><a href="#about">About</a>
+      </nav>
+      <div class="actions">
+        <button class="icon-btn search" aria-label="Search" onclick="showToast('Search is ready for your products')">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Account" onclick="showToast('Account area coming soon')">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.4 3.1-5.1 7-5.1s6.2 1.7 7 5.1"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Shopping bag" onclick="showToast('Your bag is currently empty')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div>
+            <div class="eyebrow">Autumn / Winter 2026</div>
+            <h1>Made for your everyday.</h1>
+            <p>Thoughtful essentials, refined silhouettes and timeless textures designed to live beautifully in your wardrobe.</p>
+            <a class="btn btn-light" href="#new">Shop the collection&nbsp; →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Shop by category</h2><a class="view-all" href="#shop">View all</a>
+        </div>
+        <div class="category-grid">
+          <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=85" alt="Women's fashion"><span>Women</span></a>
+          <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=85" alt="Men's fashion"><span>Men</span></a>
+          <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85" alt="Watches and accessories"><span>Accessories</span></a>
+          <a class="category" href="#shop"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=85" alt="Store interior"><span>New arrivals</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="new">
+      <div class="container">
+        <div class="section-head">
+          <h2>New arrivals</h2><a class="view-all" href="#shop">Shop all</a>
+        </div>
+        <div class="product-grid" id="shop">
+          <article class="product">
+            <div class="product-image"><span class="badge">NEW</span><button class="heart" onclick="favorite(this)" aria-label="Add to wishlist">♡</button>
+              <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85" alt="Classic leather jacket">
+            </div><div class="product-info"><div class="product-name">Classic Leather Jacket</div><div class="meta"><span>Black · S–XL</span><span class="price">₹8,990</span></div></div>
+          </article>
+          <article class="product">
+            <div class="product-image"><span class="badge">BESTSELLER</span><button class="heart" onclick="favorite(this)" aria-label="Add to wishlist">♡</button>
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85" alt="Minimal sneakers">
+            </div><div class="product-info"><div class="product-name">Everyday Sneakers</div><div class="meta"><span>White · 6–11</span><span class="price">₹4,490</span></div></div>
+          </article>
+          <article class="product">
+            <div class="product-image"><button class="heart" onclick="favorite(this)" aria-label="Add to wishlist">♡</button>
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Relaxed knit sweater">
+            </div><div class="product-info"><div class="product-name">Relaxed Knit Sweater</div><div class="meta"><span>Oat · XS–L</span><span class="price">₹3,290</span></div></div>
+          </article>
+          <article class="product">
+            <div class="product-image"><span class="badge">LIMITED</span><button class="heart" onclick="favorite(this)" aria-label="Add to wishlist">♡</button>
+              <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85" alt="Premium cotton t-shirt">
+            </div><div class="product-info"><div class="product-name">Premium Cotton Tee</div><div class="meta"><span>Ivory · XS–XXL</span><span class="price">₹1,590</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="promo">
+          <div class="promo-image"></div>
+          <div class="promo-copy">
+            <div class="eyebrow">The LUMA edit</div>
+            <h2>Less, but better.</h2>
+            <p>We believe the best wardrobe is built slowly: versatile pieces, considered materials and design that doesn't need to shout.</p>
+            <a class="btn btn-dark" href="#new">Explore essentials&nbsp; →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <h2>Stay in the loop.</h2>
+        <p>New drops, private offers and a little inspiration. No noise.</p>
+        <form class="signup" onsubmit="subscribe(event)">
+          <input type="email" placeholder="Your email address" required aria-label="Email address">
+          <button class="btn btn-dark" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo">LUMA</div><p>Modern essentials designed for everyday living. Built with intention, made to last.</p></div>
+        <div><h4>Shop</h4><ul><li><a href="#new">New In</a></li><li><a href="#shop">Best Sellers</a></li><li><a href="#categories">Women</a></li><li><a href="#categories">Men</a></li></ul></div>
+        <div><h4>Help</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQ</a></li></ul></div>
+        <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">Facebook</a></li></ul></div>
+      </div>
+      <div class="copyright"><span>© 2026 LUMA. All rights reserved.</span><span>Made for modern living.</span></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let toastTimer;
+    function showToast(message){
+      const t=document.getElementById('toast');
+      t.textContent=message;t.classList.add('show');
+      clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+    }
+    function favorite(btn){
+      btn.classList.toggle('active');
+      btn.textContent=btn.classList.contains('active')?'♥':'♡';
+      showToast(btn.classList.contains('active')?'Added to wishlist':'Removed from wishlist');
+    }
+    function subscribe(e){
+      e.preventDefault();
+      const email=e.target.querySelector('input').value;
+      e.target.reset();
+      showToast('Thanks — ' + email + ' is subscribed!');
+    }
+    function toggleMenu(){
+      const nav=document.getElementById('navLinks');
+      const open=nav.style.display==='flex';
+      nav.style.display=open?'none':'flex';
+      if(!open){nav.style.position='absolute';nav.style.top='64px';nav.style.left='4%';nav.style.right='4%';nav.style.background='#fff';nav.style.padding='18px';nav.style.borderRadius='16px';nav.style.flexDirection='column';nav.style.boxShadow='0 15px 35px #0001'}
+    }
+  </script>
+</body>
+</html>
