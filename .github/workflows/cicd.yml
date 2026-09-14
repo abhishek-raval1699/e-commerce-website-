@@ -6,23 +6,23 @@ on:
 jobs:
   code:
      runs-on: ubuntu-latest
-     steps:
+     steps: 
        - name: copy the code
-         run: 
+         run: echo "code cloned"
   build:
      runs-on: ubuntu-latest
      steps:
        - name: build
-         run: 
+         run: echo"image is build "
   test:
       runs-on: ubuntu-latest
       steps:
         - name: test the build 
-          run: 
+          run: echo "testing is done "
   deploye:
       runs-on: ubuntu-latest
       steps:
         - name: deploy the app
-          run: 
+          run:  echo "deployed on server"
    
    
