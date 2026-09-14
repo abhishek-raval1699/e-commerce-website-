@@ -11,16 +11,19 @@ jobs:
          run: echo "code cloned"
   build:
      runs-on: ubuntu-latest
+     needs: code
      steps:
        - name: build
          run: echo "image is build"
   test:
       runs-on: ubuntu-latest
+      needs: build
       steps:
         - name: test the build 
           run: echo "testing is done "
   deploye:
       runs-on: ubuntu-latest
+      needs: test
       steps:
         - name: deploy the app
           run:  echo "deployed on server"
