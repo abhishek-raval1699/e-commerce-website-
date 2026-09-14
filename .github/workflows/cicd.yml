@@ -8,7 +8,7 @@ jobs:
      runs-on: ubuntu-latest
      steps: 
        - name: copy the code
-         run: echo "code cloned"
+         uses: actions/checkout@v4
   build:
      runs-on: ubuntu-latest
      needs: code
