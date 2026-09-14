@@ -13,7 +13,7 @@ jobs:
      runs-on: ubuntu-latest
      steps:
        - name: build
-         run: echo"image is build "
+         run: echo"image is build"
   test:
       runs-on: ubuntu-latest
       steps:
