@@ -1,9 +1,8 @@
 # start with workflow name 
 name: hellow
 # when it should run
-on: 
- push:
-   branches: [main]
+on:
+ workflow_dispatch: 
 
 jobs:
  # job name  
