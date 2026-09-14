@@ -1,16 +1,28 @@
 name: ci/cd 
- on: 
+on: 
   push:
-   branch:
+    branches: [main]
 
 jobs:
   code:
-     runs-on: ub
+     runs-on: ubuntu-latest
      steps:
-       -name: copy the code
-       -run:
+       - name: copy the code
+         run: 
   build:
+     runs-on: ubuntu-latest
+     steps:
+       - name: build
+         run: 
   test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test the build 
+          run: 
   deploye:
+      runs-on: ubuntu-latest
+      steps:
+        - name: deploy the app
+          run: 
    
    
