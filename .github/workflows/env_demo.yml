@@ -14,6 +14,6 @@ jobs:
      - name: show secrete
        run: echo "my secrete is ${{ secrets.AWS_ACCESS_KEY_ID  }}"
      - name: show var
-       run: echo "docker user name is ${{ secrets.docker_hub_user}}"
+       run: echo "docker user name is ${{ vars.docker_hub_user}}"
 
   
