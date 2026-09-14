@@ -1,0 +1,16 @@
+name: ci/cd 
+ on: 
+  push:
+   branch:
+
+jobs:
+  code:
+     runs-on: ub
+     steps:
+       -name: copy the code
+       -run:
+  build:
+  test:
+  deploye:
+   
+   
