@@ -12,6 +12,6 @@ jobs:
      - name: show env 
        run: echo "may env var is ${{ env.password }}"
      - name: show secrete
-       run: echo "my secrete is ${{ secrets.AWS_ACCESS_KEY_ID  }}
+       run: echo "my secrete is ${{ secrets.AWS_ACCESS_KEY_ID  }}"
 
   
