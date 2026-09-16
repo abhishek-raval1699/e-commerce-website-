@@ -8,7 +8,13 @@ jobs:
         steps:
            - name: code-copy
              uses: actions/checkout@v7
+
+           - name: setup-python
+             uses: actions/setup-python@v7
            
+           - name: install-dipendacis
+             run: pip install -r requirements.txt
+               
            - name: code -linting 
              run: ruff check .  
 
