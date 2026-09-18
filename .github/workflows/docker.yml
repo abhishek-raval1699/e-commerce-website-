@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: ravalabhi1699/e-commerce-website:latest
+          tags: ${{ vars.DOCKER_HUB_USER }}/e-commerce-website:latest
           
       
      
