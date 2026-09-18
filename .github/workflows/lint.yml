@@ -1,16 +1,21 @@
 name: lint
 on: 
-  workflow_call: 
+  workflow_call:  
 
 jobs:
     code-lint:
         runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            python_version: ['3.12','3.13','3.14']
         steps:
            - name: code-copy
              uses: actions/checkout@v7
 
            - name: setup-python
              uses: actions/setup-python@v7
+             with:
+              pyhon-version: ${{ matrix.python_version }} 
            
            - name: install-dipendacis
              run: pip install -r requirements.txt
