@@ -6,6 +6,14 @@ on:
 jobs: 
      cd:
        runs-on: self-hosted
-       steps: 
+       steps:
+
+          - name: login
+            uses: docker/login-action@v4
+
+            with:
+              username: ${{ vars.DOCKER_HUB_USER }}
+              password: ${{ secrets.DOCKERHUB_TOKEN }}
+
           - name: cd
             run: docker composeup -d    
