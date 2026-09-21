@@ -1,7 +1,7 @@
 name: cd
 
 on: 
-    workflow_dispatch: 
+    workflow_call: 
 
 jobs: 
      cd:
@@ -16,4 +16,4 @@ jobs:
               password: ${{ secrets.DOCKERHUB_TOKEN }}
 
           - name: cd
-            run: docker composeup -d    
+            run: docker compose up -d    

@@ -11,6 +11,11 @@ jobs:
      secrets: inherit
      needs: lint-and-test
      uses: ./.github/workflows/docker.yml
+
+   deploy: 
+      secrets: inherit
+      needs: build-and-push
+      uses: ./.github/workflows/cd.yml  
   
   
   
