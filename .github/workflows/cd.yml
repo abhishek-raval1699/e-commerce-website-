@@ -1,0 +1,11 @@
+name: cd
+
+on: 
+    workflow_dispatch: 
+
+jobs: 
+     cd:
+       runs-on: self-hosted
+       steps: 
+          - name: cd
+            run: docker composeup -d    
