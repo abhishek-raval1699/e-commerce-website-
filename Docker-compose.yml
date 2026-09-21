@@ -1,0 +1,7 @@
+services:
+    app: 
+      
+      image: ravalabhi1699/e-commerce-website
+      ports:
+       - 80:80
+       
