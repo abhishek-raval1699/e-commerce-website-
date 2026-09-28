@@ -1,0 +1,25 @@
+# goal is to call the workflow in the order to implement shift left
+
+name: devsecops
+
+on: 
+    push:
+
+jobs:
+
+    secrate-scane:
+     uses: ./.github/workflows/secrate-scane.yml
+
+    lint-and-test:
+    # needs: secrate-scane   
+     uses: ./.github/workflows/lint.yml
+
+    build-and-push: 
+     secrets: inherit
+     needs: lint-and-test
+     uses: ./.github/workflows/docker.yml
+
+    deploy: 
+      secrets: inherit
+      needs: build-and-push
+      uses: ./.github/workflows/cd.yml          
