@@ -11,7 +11,7 @@ jobs:
      uses: ./.github/workflows/secrate-scane.yml
 
     lint-and-test:
-    # needs: secrate-scane   
+     needs: secrate-scane   
      uses: ./.github/workflows/lint.yml
 
     build-and-push: 
