@@ -13,6 +13,6 @@ jobs:
                 fetch-depth: 0
             
             - name: Run Gitleaks
-              uses: gitleaks/gitleaks-action@v3
+              uses: dortort/betterleaks-action@v0.1.0
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
