@@ -8,6 +8,7 @@ on:
 jobs:
 
     secrate-scane:
+     secrets: inherit
      uses: ./.github/workflows/secrate-scane.yml
 
     lint-and-test:
